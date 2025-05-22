@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robux Generator Parodi</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      margin: 50px auto;
+      padding: 30px;
+      max-width: 450px;
+      background-color: #2a2a2a;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00ff00aa;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #00ff00;
+    }
+
+    input, select, button {
+      padding: 12px;
+      margin: 10px;
+      width: 80%;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #00ff00;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #00cc00;
+    }
+
+    .robux-icon {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+
+    #status {
+      margin-top: 20px;
+      min-height: 50px;
+      font-weight: bold;
+      color: #00ff00;
+      white-space: pre-line;
+    }
+
+    .loading {
+      font-family: monospace;
+      color: #0f0;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Robux_2019_Logo_Green.svg" alt="Robux" class="robux-icon">
+    <h1>Robux Generator Parodi</h1>
+    <input type="text" id="username" placeholder="Username Roblox">
+    <br>
+    <select id="robuxAmount">
+      <option value="400">400 Robux</option>
+      <option value="1000">1,000 Robux</option>
+      <option value="5000">5,000 Robux</option>
+      <option value="99999">99,999 Robux</option>
+    </select><br>
+    <button onclick="generateRobux()">Generate</button>
+    <div id="status"></div>
+    <audio id="effect" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+  </div>
+
+  <script>
+    function generateRobux() {
+      const username = document.getElementById("username").value.trim();
+      const amount = document.getElementById("robuxAmount").value;
+      const status = document.getElementById("status");
+      const sound = document.getElementById("effect");
+
+      if (username === "") {
+        status.innerText = "Tolong masukkan username Roblox.";
+        status.style.color = "red";
+        return;
+      }
+
+      sound.play();
+      status.style.color = "#0f0";
+      status.innerHTML = `Menghubungkan ke server Roblox... <span class="loading">|</span>`;
+
+      setTimeout(() => {
+        status.innerText = `Memverifikasi akun "${username}"...`;
+        setTimeout(() => {
+          status.innerText = `Menyuntikkan ${amount} Robux...`;
+          setTimeout(() => {
+            status.innerText = `Berhasil!\n${amount} Robux telah dikirim ke akun "${username}" (bohongan, tenang aja).`;
+          }, 2000);
+        }, 2000);
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
+                                  
